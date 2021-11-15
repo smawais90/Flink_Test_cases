@@ -14,6 +14,5 @@ describe('Shop Suncreen Or Moisturizers', () => {
       fn.weather_shopper() 
       fn.payment()
   })
-
 })
 
