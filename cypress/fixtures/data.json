@@ -1,0 +1,10 @@
+{
+  "payment": {
+    "email": "test@123.com",
+    "card_number1": "4242 4242 ",
+    "card_number2": "4242 4242",
+    "DOE":"0122",
+    "cvc":"123",
+    "zipCode": "44000"
+  }
+}
