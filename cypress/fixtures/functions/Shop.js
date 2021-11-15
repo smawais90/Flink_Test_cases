@@ -1,7 +1,7 @@
 const data = require('../../fixtures/data')
 var el = require('../../fixtures/elements.json')
 
- export var shop_sunScreen = () => {
+ export var weather_shopper = () => {
   var temp
   // Getting temperature value
   cy.get(el.temprature).invoke('text').then((text) => {
@@ -19,7 +19,6 @@ var el = require('../../fixtures/elements.json')
       price_SPF50 = price_SPF50.match(/.{1,3}/g)
       least_SPF50_price = Math.min(...price_SPF50)
       cy.get('.col-4>p:contains("-50")').next().contains(least_SPF50_price).next('button').click()
-      
     })
     // Getting least price item for spf-30
     var least_SPF30_price = cy.get('.col-4>p:contains("-30")').next('p:contains("Price")').invoke('text').then((text) => {
@@ -34,7 +33,6 @@ var el = require('../../fixtures/elements.json')
       cy.get('tr>td').next().eq(1).should('have.text', least_SPF30_price)  
     })
   }
-
   else if (temp < 19) {
     cy.get('button').contains('Buy moisturizers').click({force:true})
     // Getting least price item for almond
@@ -59,11 +57,7 @@ var el = require('../../fixtures/elements.json')
       cy.get('tr>td').next().eq(1).should('have.text', least_aloe_price)         
     })   
   }
-  // else {
-  //   cy.log('you dont need moisturizer nor sunscreen')
-  // }
   })  
-
  }
  export var payment = () => {
    // setting up payment using stripe iframe. 
