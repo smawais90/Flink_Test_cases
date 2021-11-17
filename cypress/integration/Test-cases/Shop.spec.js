@@ -5,14 +5,20 @@ var el = require('../../fixtures/elements.json') // all the functions are being 
 
 describe('Shop Suncreen Or Moisturizers', () => {
   beforeEach(() => {
-    cy.viewport(1280,720) 
+    cy.viewport(1280,720)
+    fn.get_weather() 
   })
-  it('it should shop Sunscreen or Moisturizers according to temperature', () => {
+  it.only('it should shop Sunscreen temperature if temprature is greater than 34', () => {
    
-      cy.visit('/')
-      cy.get(el.temprature).should('exist')
-      fn.weather_shopper() 
-      fn.payment()
+      
+      fn.shop_Sunscreen() 
+      
   })
+  it.only('it should shop Moisturizers if the temperature is less than 19', () => {
+   
+    
+    fn.shop_Moisturizers() 
+    
+})
 })
 
