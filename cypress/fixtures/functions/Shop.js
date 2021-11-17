@@ -1,5 +1,5 @@
 const data = require('../../fixtures/data')
-var el = require('../../fixtures/elements.json')
+const el = require('../../fixtures/elements.json')
 var temp
  export var get_weather = () => {
   cy.visit('/')
@@ -37,7 +37,6 @@ export var shop_Sunscreen = () => {
          // setting up payment using stripe iframe. 
 
   cy.get('.stripe-button-el').click()
-  cy.wait(5000)
   cy.get('iframe').then($iframe => {
     const doc = $iframe.contents()
     var email = doc.find('input')[0]
@@ -61,7 +60,8 @@ export var shop_Sunscreen = () => {
     var submit = doc.find('button')
     cy.wrap(submit).click()
   })
-  cy.wait(5000)
+  // cy.intercept('GET', '/confirmation').as('confirmation')
+  // cy.wait('@confirmation')
   cy.get('h2').should('have.text','PAYMENT SUCCESS')
     })
   }
@@ -93,7 +93,6 @@ export var shop_Sunscreen = () => {
            // setting up payment using stripe iframe. 
 
   cy.get('.stripe-button-el').click()
-  cy.wait(5000)
   cy.get('iframe').then($iframe => {
     const doc = $iframe.contents()
     var email = doc.find('input')[0]
@@ -117,39 +116,14 @@ export var shop_Sunscreen = () => {
     var submit = doc.find('button')
     cy.wrap(submit).click()
   })
-  cy.wait(5000)
+  // cy.intercept('GET', '/confirmation').as('confirmation')
+  // cy.wait('@confirmation')
   cy.get('h2').should('have.text','PAYMENT SUCCESS')      
       })   
     } 
   } 
-//  export var payment = () => {
-//    // setting up payment using stripe iframe. 
-
-//   cy.get('.stripe-button-el').click()
-//   cy.wait(5000)
-//   cy.get('iframe').then($iframe => {
-//     const doc = $iframe.contents()
-//     var email = doc.find('input')[0]
-//     cy.wrap(email).type(data.payment.email)
-
-//     var cardNumber = doc.find('input')[1]
-//     cy.wrap(cardNumber).type(data.payment.card_number1)
-
-//     var cardNumber = doc.find('input')[1]
-//     cy.wrap(cardNumber).type(data.payment.card_number2)
-
-//     var doe = doc.find('input')[2]
-//     cy.wrap(doe).type(data.payment.DOE)
-
-//     var cvc = doc.find('input')[3]
-//     cy.wrap(cvc).type(data.payment.cvc)
-
-//     var zipCode = doc.find('input')[4]
-//     cy.wrap(zipCode).type(data.payment.zipCode)
-
-//     var submit = doc.find('button')
-//     cy.wrap(submit).click()
-//   })
-//   cy.wait(5000)
-//   cy.get('h2').should('have.text','PAYMENT SUCCESS')
-// }
+export var  shop_nothing = () => {
+  if (temp >= 19 && temp <= 34) {
+    cy.log('You dont need to buy anything')
+  }
+}

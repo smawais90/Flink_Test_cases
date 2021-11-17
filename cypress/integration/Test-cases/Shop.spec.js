@@ -20,5 +20,10 @@ describe('Shop Suncreen Or Moisturizers', () => {
     fn.shop_Moisturizers() 
     
 })
+it.only('it should shop Nothing is between 19 and 34', () => {
+   
+    fn.shop_nothing()
+  
+})
 })
 
